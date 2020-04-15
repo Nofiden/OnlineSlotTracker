@@ -1,0 +1,75 @@
+Step 1 : Open Chrome in laptop and login to AmazonFresh/Costco and navigate till purchase window where it tells "No delivery windows available"
+Step 2 : Open developer tools[press F12], navigate to "console" tab.
+Step 3 : Paste the below corresponding code snippet[AmazonFresh/Costco] in console and hit "Enter". Don't refresh the page or navigate to other links in the page after hitting "Enter"
+Step 4 : When the slot is open you will hear long beep sound and the "Place Order" tab will be opened up in new browser tab where you can directly place order. Be sure to keep the volume up to the level. 
+
+
+==============================================Monitor Amazon Fresh=========https://www.amazon.com/============================
+
+var isSlotOpen = 0;
+var context = new AudioContext();
+var sound = context.createOscillator();
+var timeInSec = 5;
+sound.type = "sine";
+sound.connect(context.destination);
+var interval = setInterval(function() {
+    $.get("https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1", function(data, status) {
+
+        if (status == "success") {
+		if(isSlotOpen == 0){
+            if (data.indexOf("ufss-slot-time-window-text") == -1) {
+                console.log("Slot Status : No delivery slot available");
+            } else {
+			
+                console.log("Slot Status : Slot Available!" );
+                sound.start();
+				clearInterval(interval);
+				isSlotOpen = 1;
+				window.open("https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1");
+            }
+			}
+        } else {
+            console.log("Site not reachable!")
+        }
+    });
+},timeInSec * 1000);
+
+==============================================Monitor Costco=========https://sameday.costco.com/============================
+
+var isSlotOpen = 0;
+var context = new AudioContext();
+var sound = context.createOscillator();
+var timeInSec = 5;
+sound.type = "sine";
+sound.connect(context.destination);
+var interval = setInterval(function() {
+    $.get("https://sameday.costco.com/v3/retailers/5/delivery_options?source=web", function(data, status) {
+        if (status == "success") {
+		if(isSlotOpen == 0){
+            if (data.service_options.error_module != null && data.service_options.error_module.hasOwnProperty("title") && data.service_options.error_module.title == "No delivery times available") {
+                console.log("Slot Status : No delivery slot available");
+            } else {
+			
+                console.log("Slot Status : Slot Available!" );
+                sound.start();
+				clearInterval(interval);
+				isSlotOpen = 1;
+				window.open("https://sameday.costco.com/store/checkout_v3");
+            }
+			}
+        } else {
+            console.log("Site not reachable!")
+        }
+    });
+},timeInSec * 1000);
+
+====================================================================================================
+
+
+
+
+
+
+
+
+
