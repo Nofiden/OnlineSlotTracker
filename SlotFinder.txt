@@ -1,4 +1,4 @@
-Step 1 : Open Chrome in laptop and login to AmazonFresh OR sameday.costco.com and navigate till purchase window where it tells "No delivery windows available"
+Step 1 : Open Chrome in laptop/desktop and login to AmazonFresh OR sameday.costco.com and navigate till purchase window where it tells "No delivery windows available"
 Step 2 : Open developer tools[press F12], navigate to "console" tab.
 Step 3 : Paste the below corresponding code snippet[AmazonFresh/Costco] in console and hit "Enter". Don't refresh the page or navigate to other links in the page after hitting "Enter"
 Step 4 : When the slot is open you will hear long beep sound and the "Place Order" tab will be opened up in new browser tab where you can directly place order. Be sure to keep the volume up to the level. 
