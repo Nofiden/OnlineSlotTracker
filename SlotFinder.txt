@@ -4,6 +4,8 @@ Step 3 : Paste the below corresponding code snippet[AmazonFresh/Costco] in conso
 Step 4 : When the slot is open you will hear long beep sound and the "Place Order" tab will be opened up in new browser tab where you can directly place order. Be sure to keep the volume up to the level. 
 
 
+Optional Details : If you feel the alert sound is annoying, either close the tab opened by you in step1 Or type the command "sound.stop();" in the console opened in step 2 and hit enter.
+
 ==============================================Monitor Amazon Fresh=========https://www.amazon.com/============================
 
 var isSlotOpen = 0;
